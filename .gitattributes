@@ -1,0 +1,7 @@
+* text=auto
+*.md text eol=lf
+LICENSE text eol=lf
+*.sh text eol=lf
+*.mkv binary
+*.7z binary
+*.pptx binary
