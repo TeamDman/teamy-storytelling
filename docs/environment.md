@@ -2,6 +2,8 @@
 
 Target: a separate saved Codex cloud environment named `storytelling-env`, attached to this repository. Do not modify or clone a producer repository merely to make a video.
 
+Include [TeamDman/teamy-docs](https://github.com/TeamDman/teamy-docs) as a second checkout through the supported multi-repository setup. It holds shared provider/reference documentation; this repository holds environment-specific usage and production materials. Read the shared documentation in place instead of copying it. Verify both checkouts are readable in a fresh cloud task. Provider documentation does not authorize paid calls, credentials or expanded permissions, and setup does not require changing teamy-docs.
+
 ## Initial status
 
 This initial documentation commit does not assert that any provider is installed or cloud-tested. After setup, record exact versions, installation commands, runtime details and successful render commands here. Do not substitute an installation success for a render test.
