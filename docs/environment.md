@@ -4,9 +4,9 @@ Target: a separate saved Codex cloud environment named `storytelling-env`, attac
 
 Include [TeamDman/teamy-docs](https://github.com/TeamDman/teamy-docs) as a second checkout through the supported multi-repository setup. It holds shared provider/reference documentation; this repository holds environment-specific usage and production materials. Read the shared documentation in place instead of copying it. Verify both checkouts are readable in a fresh cloud task. Provider documentation does not authorize paid calls, credentials or expanded permissions, and setup does not require changing teamy-docs.
 
-## Initial status
+## Validation status
 
-This initial documentation commit does not assert that any provider is installed or cloud-tested. After setup, record exact versions, installation commands, runtime details and successful render commands here. Do not substitute an installation success for a render test.
+The saved environment has completed six-provider synthetic rendering in a fresh cloud task, with Library delivery verified. This is evidence for those smoke scenes and the tested saved version, not arbitrary scene compatibility or proof of a later environment refresh. Re-run a small acceptance check after changing tool installations. Reproducible installation and startup instructions belong to the saved environment; preserve them when refreshing documentation checkouts.
 
 ## Tools to provision
 
@@ -32,3 +32,13 @@ Shared tools: FFmpeg/ffprobe, 7-Zip, a browser suitable for rendering, LibreOffi
 5. Record reproducible commands and measured runtime/resource limits. Do not claim CPU/GPU or platform support based only on upstream claims.
 
 No paid calls, new credentials, expanded persistent grants or network-security changes are implied by this setup. Stop at any such requirement and identify the exact action needed.
+
+## Planned providers
+
+Remotion, Psychopomp and a p5.js/p5.brush browser-frame pipeline inspired by PDoomVideo are candidates, not installed or tested additions. Read the shared [provider survey](https://github.com/TeamDman/teamy-docs/blob/main/src/making-videos.md#additional-storytelling-candidates) for dated source evidence and licensing boundaries.
+
+- **Remotion:** React/TypeScript compositions with Node.js and browser rendering. Review its special commercial license eligibility before adoption; qualify browser dependencies and memory/concurrency using a synthetic scene.
+- **Psychopomp:** Rust scene plans rendered by wgpu/FFmpeg. Upstream's early macOS/Metal evidence does not establish Linux cloud support. Qualify GPU backend and fonts separately; optional external narration services remain outside setup authorization.
+- **PDoomVideo-inspired browser frames:** timestamp-addressable p5.js/p5.brush scenes, contact sheets, resumable frame batches and FFmpeg encoding. The reviewed upstream project has fixed music/duration and Windows Chrome/D3D11 assumptions. Implement a small independent synthetic scene before adopting the strategy; review dependency and asset rights separately from the package's ISC declaration. No upstream music or artwork is approved for reuse by this listing.
+
+Each candidate must produce a meaningful video, pass full decoding and visual review, and deliver `output.mkv` plus instruction-selected `extras.7z`. An editable page, deck or canvas alone is not a video result. Use Library for file delivery; private-network hosting is not required for this workflow. No paid services, credentials, new security settings or upstream code execution were performed by this documentation update.
