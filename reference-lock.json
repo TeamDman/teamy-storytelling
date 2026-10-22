@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "references": [
+    {
+      "name": "motion-canvas-examples",
+      "url": "https://github.com/motion-canvas/examples.git",
+      "commit": "8ffefed144368d33de4b0e451894c718eb95d574",
+      "license": "MIT",
+      "attribution": "Copyright (c) 2022 motion-canvas",
+      "license_sha256": "b58b18ec3a622bb72af16058f73634a3c0ef98a81dd0f6f16e2b7d492480f3e3",
+      "purpose": "Source reference only; do not install dependencies or run examples during setup."
+    }
+  ]
+}

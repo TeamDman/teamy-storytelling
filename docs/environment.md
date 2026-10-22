@@ -23,10 +23,36 @@ Use official package registries and upstream installation documentation. Keep th
 
 Shared tools: FFmpeg/ffprobe, 7-Zip, a browser suitable for rendering, LibreOffice for PPTX rendering, and openly licensed fonts. Install through official distro/vendor sources. LaTeX may be needed for later scenes, but the first smoke test can use plain text and shapes. GX includes its own typesetting and encoding path. Original project code licenses do not cover every bundled component: GX native distributions include copyleft encoder components; inspect their notices before redistributing tools.
 
+## Motion Canvas reference checkout
+
+The official [motion-canvas/examples](https://github.com/motion-canvas/examples) repository is source reference material, not instructions or an additional installed renderer. `reference-lock.json` pins revision `8ffefed144368d33de4b0e451894c718eb95d574`, its MIT license digest and attribution (copyright 2022 motion-canvas). Preserve that notice when copying substantial code. The [shared example guide](https://github.com/TeamDman/teamy-docs/blob/main/src/making-videos.md#motion-canvas-example-scenes) points to code/visual synchronization, signals, camera diagrams and state-machine scenes.
+
+After the existing runtime installer has sourced its activation script, append this command to the saved environment setup (replace the synthetic repository path with the environment's storytelling checkout):
+
+```sh
+python3 /path/to/teamy-storytelling/scripts/setup-references.py \
+  --root "$STORY_ROOT/references"
+```
+
+The checkout is then at `$STORY_ROOT/references/motion-canvas-examples`. The script uses Python's standard library and Git, fetches the exact locked commit into a detached checkout, verifies origin/revision/cleanliness/license, and retains the upstream LICENSE and README. It does not install npm dependencies, run example code, initialize submodules, or change the qualified renderer. Existing matching checkouts are reused without network access. A dirty, unrelated or differently pinned checkout is left unchanged and reported; review and move it aside explicitly before an intended reference update.
+
+Add the following offline check to startup/acceptance after activation:
+
+```sh
+python3 /path/to/teamy-storytelling/scripts/setup-references.py \
+  --root "$STORY_ROOT/references" --check-only
+```
+
+Outside the saved runtime, omit `--root` to use `$STORY_ROOT/references` when `STORY_ROOT` is set, otherwise the repository's ignored `.references/` directory. Verify a fresh setup plus a second offline check after changing the lock. Regression checks for clean reuse, local-edit preservation, wrong origin/revision, failed fetch and license mismatch run with `python3 -m unittest discover -s tests -v`.
+
+The upstream package uses Motion Canvas core/2d/ui 3.15.0, Vite plugin 3.14.1 and Vite `^4.3.5`; this is older than the qualified 3.17.2 renderer. Treat scenes as techniques to adapt, not guaranteed drop-in projects. Named timeline cues, dependencies and media provenance need review before running examples. No upstream example render is claimed by source-checkout verification.
+
+Saving this repository change does not itself update the hosted environment's setup/startup fields. Apply both commands there only after the feature revision is available to that environment; preserve its existing installation and startup commands. A fresh cloud task must verify the pinned checkout before claiming the saved environment was refreshed.
+
 ## Cloud acceptance
 
 1. Register the saved environment and record its actual name and ID in the task handoff.
-2. In a fresh cloud task, check installed versions and render a short synthetic story with all six providers.
+2. In a fresh cloud task, verify the pinned reference checkout with `--check-only`, then check installed versions and render a short synthetic story with all six providers.
 3. For each provider, report install, render, full video decoding and visual review separately; preserve the exact error if unsupported.
 4. Deliver one `output.mkv` and one `extras.7z` per provider. Include the native PPTX or Excalidraw file for those tests; the other extras may intentionally be zero bytes.
 5. Record reproducible commands and measured runtime/resource limits. Do not claim CPU/GPU or platform support based only on upstream claims.
