@@ -1,0 +1,16 @@
+<!doctype html><html><body><script type="module">
+import {Renderer,Vector2} from '@motion-canvas/core';
+const name=new URLSearchParams(location.search).get('project')||'smoke';
+const project=(await import(/* @vite-ignore */ `/src/project-${name}.ts?project`)).default;
+window.logs=[];
+project.logger.onLogged.subscribe(x=>{window.logs.push({level:x.level,message:x.message,stack:x.stack});console.log(x.message)});
+const renderer=new Renderer(project);
+renderer.onFinished.subscribe(x=>window.result=x);
+renderer.onFrameChanged.subscribe(x=>window.frame=x);
+window.settings=(options={})=>({...project.meta.getFullRenderingSettings(),name,
+  size:new Vector2(1920,1080),resolutionScale:1,fps:24,range:[0,999],
+  exporter:{name:'@motion-canvas/ffmpeg',options:{fastStart:true,includeAudio:false}},...options});
+window.run=async options=>{await renderer.render(window.settings(options));window.done=true;};
+window.still=async time=>{await renderer.renderFrame(window.settings(),time);return renderer.stage.finalBuffer.toDataURL('image/png');};
+window.ready=true;
+</script></body></html>
