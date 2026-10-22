@@ -15,8 +15,13 @@ render=root/'renders'/f'{name}.mp4'
 report=json.loads((root/'renders'/f'{name}-render.json').read_text())
 assert report['result']==0, report
 timeline=report['timelines'][name]
-duration=timeline[-1]['end']
+scene_duration=timeline[-1]['end']
 fps=24
+# Motion Canvas exports the closing boundary frame inclusively. Preserve it
+# without another lossy encode, and extend the final cue to its encoded end.
+expected_frames=round(scene_duration*fps)+1
+duration=expected_frames/fps
+timeline[-1]['end']=duration
 chapters=[c for c in timeline if c.get('chapter')]
 assert chapters and chapters[0]['start']==0
 titles={'route':'Keep the route open','forensic':'The one-FE gap','atlas':'Inside the release'}
@@ -40,14 +45,14 @@ assert video['pix_fmt']=='yuv420p' and video['r_frame_rate']=='24/1'
 assert video['disposition']['default']==1
 assert abs(float(probe['format']['duration'])-duration)<1/fps+.01
 assert len(probe['chapters'])==len(chapters)
-assert int(video['nb_read_frames'])==round(duration*fps)
+assert int(video['nb_read_frames'])==expected_frames
 for p,c in zip(probe['chapters'],chapters):
     assert abs(float(p['start_time'])-c['start'])<.002
     assert p['tags']['title']==c['title']
 for file in [dest/'output.mkv',previews/f'{name}.mp4']:
     result=run('ffmpeg','-v','error','-xerror','-i',file,'-f','null','-',capture=True)
     assert not result.stderr, result.stderr
-validation={'duration':duration,'frames':int(video['nb_read_frames']),'dimensions':[video['width'],video['height']],'codec':video['codec_name'],'pixel_format':video['pix_fmt'],'fps':video['r_frame_rate'],'audio_streams':0,'default_video':True,
+validation={'duration':float(probe['format']['duration']),'scene_duration':scene_duration,'closing_boundary_frame':'Preserved from native Motion Canvas export; final cue and chapter include it.','frames':int(video['nb_read_frames']),'dimensions':[video['width'],video['height']],'codec':video['codec_name'],'pixel_format':video['pix_fmt'],'fps':video['r_frame_rate'],'audio_streams':0,'default_video':True,
     'full_decode':'PASS','preview_decode':'PASS','chapters':probe['chapters'],'timeline':timeline,
     'source_render_seconds':report.get('seconds'),'visual_review':'See REVIEW.md; contact sheet and actual frames must be inspected.'}
 (work/'validation.json').write_text(json.dumps(validation,indent=2)+'\n')

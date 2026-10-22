@@ -53,10 +53,12 @@ Experimental Code draw hooks are explicitly enabled only to keep unselected
 source readable during selections. No renderer dependencies are modified.
 
 `director.ts` records cue and chapter starts from the final generator timeline.
-`scripts/package.py` derives FFmpeg chapter metadata from that record, trims the
-native export's boundary frame, remuxes the canonical MKV, generates a fast-start
+`scripts/package.py` derives FFmpeg chapter metadata from that record, preserves the
+native export's inclusive closing boundary frame, remuxes the canonical MKV, generates a fast-start
 MP4 preview, decodes both fully, validates frame count and chapters, and tests the
-7-Zip archive. Its `validation.json` describes completed checks for that build.
+7-Zip archive. Its `validation.json` describes completed checks for that build. Encoded films include
+one closing boundary frame (about 0.042 seconds) beyond the named scene duration;
+the final packaged cue and chapter include it.
 
 ## Evidence boundary
 
