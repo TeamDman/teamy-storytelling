@@ -1,0 +1,7 @@
+<html><body><script type="module">
+import project from '/project.ts?project';
+import {Renderer,Vector2} from '@motion-canvas/core';
+window.logs=[];project.logger.onLogged.subscribe(x=>window.logs.push(x));
+const renderer=new Renderer(project);renderer.onFinished.subscribe(x=>window.result=x);
+window.run=async()=>{await renderer.render({...project.meta.getFullRenderingSettings(),name:'Synthetic3DOrbit',size:new Vector2(640,360),resolutionScale:1,fps:30,range:[0,4],exporter:{name:'@motion-canvas/ffmpeg',options:{fastStart:true,includeAudio:false}}});window.done=true};window.ready=true;
+</script></body></html>

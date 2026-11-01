@@ -1,0 +1,6 @@
+<html><body style="margin:0"><script type="module">
+import * as T from 'three';import {createWorld} from '../runtime/world.mjs';
+const profile=new URLSearchParams(location.search).get('profile')??'first';const world=await createWorld({profile});const renderer=new T.WebGLRenderer({preserveDrawingBuffer:true,antialias:false});renderer.setSize(1280,720);renderer.setClearColor('#b5d0ff');document.body.append(renderer.domElement);
+window.draw=(i,t=i*.3)=>{world.update(t,{figure:i});renderer.render(world.scene,world.camera);return {eye:world.camera.position.toArray(),forward:world.camera.getWorldDirection(new T.Vector3()).toArray(),beam:world.beam.visible,glError:renderer.getContext().getError(),calls:renderer.info.render.calls}};
+window.world=world;window.draw(0);window.ready=true;
+</script></body></html>

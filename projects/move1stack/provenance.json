@@ -1,0 +1,35 @@
+{
+  "inputs": [
+    {
+      "library_file_id": "libfile_2d42284124848191ba94dcd083cdca7d",
+      "file_id": "file_00000000457c823091f6e9868e7e6904",
+      "version": 1,
+      "filename": "move1stack-scene-bundle.zip",
+      "bytes": 195921,
+      "sha256": "4cac2277d46141969bce952fdb533dc7dc712d10b87faf368834c8a68f4aaac5"
+    },
+    {
+      "library_file_id": "libfile_7f631b699ba8819195fd8096ee1fa895",
+      "file_id": "file_00000000447c8230bddcf783dafbf552",
+      "version": 0,
+      "filename": "sfm-move1stack-reference-1cfc20e8754c41e486856074bcd8d0c1.bundle.zip",
+      "bytes": 5135156,
+      "sha256": "eb037132a864604747530b61e8067949643363d5edfd16a8f793ca41a45ea7ff"
+    },
+    {
+      "library_file_id": "libfile_24e00c364ad08191afbd803d8f9a4cbb",
+      "file_id": "file_00000000702481fdb863032f95661aed",
+      "version": 0,
+      "filename": "move1stack-story-handoff.7z",
+      "bytes": 80095,
+      "sha256": "66f4db36766e03ffe62e16474e3c86ed3a03c9c67f63d1e0acb8d4a7ec12efac"
+    }
+  ],
+  "storytellingInitialHEAD": "5cb9272b0b31e8863bf1d417972aa66fded3a766",
+  "docsHEAD": "0a3806af310b33c2a2e2652dce63e10e55562977",
+  "referenceSource": "8794d96fd0f74306d70131c9b4a858db74984a89",
+  "captureDirtyFingerprint": "blake3:f2e73babb065f134ac8ccccbd4cac7b65008bb2a",
+  "sceneManifestSHA256": "1caa58fb37858eba2ecd0d716f4a727475dc5d3687222fcba75d6c46b1777016",
+  "originalAssetsVerified": 75,
+  "assetPolicy": "Original acquired textures/models, reference PNGs, decompilation and generated derivatives are not committed. Materialize the exact Library versions with current supported Library tooling; Library identifiers grant no access by themselves."
+}

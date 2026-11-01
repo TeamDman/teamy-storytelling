@@ -1,0 +1,30 @@
+.inputs/
+.verified-input-*/
+.extras-*/
+# Acquired/private inputs and derivatives retain their original rights.
+ground-truth/
+reference-evidence/
+baked-scene.json
+grass-field.png
+stills/
+comparisons/
+media/
+smoke-media/
+deliverable/
+extras-content/
+evidence/
+.settings/
+# Publish only explicitly selected small refinement source/evidence.
+candidates/*
+!candidates/filtering/
+candidates/filtering/*
+!candidates/filtering/evaluate.py
+!candidates/filtering/refinement-summary.json
+# Motion Canvas regenerates these editor/cache files.
+production/*.meta
+smoke/*.meta
+*.timestamp-*
+
+previews/
+
+debug-page.cjs

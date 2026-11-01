@@ -1,0 +1,60 @@
+{
+  "sourceCorrection": "Disable mipmaps on three beacon cutout textures; keep first-render profile default.",
+  "sourceEvidence": [
+    {
+      "path": "ground-truth/evidence/java/faa.java",
+      "lines": "20 CUTOUT uses ai instead of ah"
+    },
+    {
+      "path": "ground-truth/evidence/RenderStateShard.mapping.txt",
+      "lines": "64-65: ah=BLOCK_SHEET_MIPPED, ai=BLOCK_SHEET"
+    },
+    {
+      "path": "ground-truth/evidence/java/ezz.java",
+      "lines": "99-100: ah=(atlas,false,true), ai=(atlas,false,false)"
+    }
+  ],
+  "allEightBaselineIdenticalToPreserved": true,
+  "changedPixelsAcrossEightImages": 92,
+  "improvedFigures": [
+    5,
+    7
+  ],
+  "unchangedFigures": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8
+  ],
+  "worsenedFigures": [],
+  "interpretation": "Small source-conformance correction with measurable improvement; no substantial visual fidelity gain claimed. Not tuning to one camera.",
+  "remaining": [
+    {
+      "area": "terrain horizon",
+      "evidence": "flat-world source and eight images",
+      "decision": "Do not reproduce historical loading/chunk-edge shapes without render-distance/chunk data."
+    },
+    {
+      "area": "terrain pattern",
+      "evidence": "original grass texture and four Y-rotation variants available",
+      "decision": "Exact model position-seed/random-stream implementation not in this bundle. Keep disclosed approximate seeded field; do not optimize rotations against one screenshot."
+    },
+    {
+      "area": "block lighting/AO",
+      "evidence": "shader multiplies vertex color by a lightmap; capture-time AO/gamma/lightmap values unavailable",
+      "decision": "Do not invent AO strength, lightmap, gamma, or per-face color curves. Existing directional approximation stays disclosed."
+    },
+    {
+      "area": "texture filtering",
+      "evidence": "cutout/nonmipped distinction explicit in supplied source",
+      "decision": "Correct beacon cutout. Keep unknown capture-time mipmap levels/atlas sampling for opaque blocks unresolved."
+    },
+    {
+      "area": "beacon geometry/materials",
+      "evidence": "exact model boxes/UVs, discard, beam scrolling/rotation and layer depth writes supplied",
+      "decision": "Existing geometry conforms. Live segment heights/time, dye-color lookup, full composite-state defaults and transparency order not all recoverable here; do not fit a phase or appearance per camera."
+    }
+  ]
+}
