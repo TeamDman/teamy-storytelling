@@ -121,3 +121,31 @@ ignored `previews/conference-slice-08/` and never overwrite an existing cut.
 The ten-second preview decoded fully at 1280×720, 30 fps and 300 frames. Its
 world inset had zero near-static adjacent pairs out of 299, and the full and
 empty inventory panels were verified to swap between endpoints.
+
+## Slice 11: legacy-skin model
+
+`skin_model.py` uses the supplied 64×32 skin (`libfile_a907459b10048191a799f556824ab6b3`,
+SHA-256 `dc6d27c115e71009ced5a2bc41a24e918b45edf5a584e639ec56b832126d2635`)
+to construct a classic-proportioned player with mirrored legacy arms and legs.
+The saved skin's head-overlay region is fully transparent. The Blender model is
+a static reconstruction, composited over the editor rather than placed in the
+world. It does not reproduce first-person interaction, lighting, animation, or
+claim a Minecraft capture. Side and back UVs have not been checked against an
+actual player capture.
+
+Place the exact skin at `.inputs/skin.png`, restore the orbit and generate
+slice 05. Then run:
+
+```sh
+blender --background --threads 2 --python conference-preview/skin_model.py
+python3 conference-preview/slice11.py
+```
+
+The model script refuses to overwrite files
+under `previews/conference-slice-10/`; the video script preserves existing
+output under `previews/conference-slice-11/`. Blender 4.3.2 was used here.
+The compositor runs `verify_skin_model.py`: all 352 front-face pixel-center
+samples, including both mirrored limbs, matched the skin within one channel
+value in this render. This check does not verify the unseen faces or animation.
+Both nine-second videos decoded fully at 1280×720 and 30 fps; the moving world
+inset had zero near-static pairs out of 269.
