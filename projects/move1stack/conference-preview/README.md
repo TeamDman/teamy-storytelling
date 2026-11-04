@@ -391,3 +391,51 @@ preview and output-resolution font comparison are separately retained in
 Library; generated media is not committed. The rendered preview is H.264
 `yuv420p`, so chroma subsampling and compression can still affect coloured
 edges even though GUI pixels were scaled without smoothing.
+
+## Motion Canvas conference slice: manager, editor and transfer
+
+`production/conference-project.ts` extends the Motion Canvas timeline to 15
+seconds. After the staged world and player gesture, it shows a manager screen,
+the V1 editor, and a side-by-side explanatory cutaway of barrels `a` and `b`.
+A single visible 64-item stack moves from `a`'s first slot to `b`'s first slot.
+The verified direct test specifies the program and the initial and eventual
+slot contents; the camera, gesture, screen transitions, concurrent barrel
+views, flight path, 1.5-second movement, manager running state, and empty
+player inventory are illustrative. They are not recorded gameplay or evidence
+of the actual completion time. The V1 layout, button positions and syntax
+colours follow the pinned sources linked in slices 02 and 03; widget borders
+and screen state remain approximations.
+
+All screen text uses the verified Minecraft ASCII bitmap atlas, drawn at a
+logical pixel size and enlarged with nearest-neighbour sampling. The SFM
+manager background and disk icon use the pinned source assets documented in
+slice 02. The official 1.19.2 dirt item model inherits `block/dirt`, which uses
+`block/dirt.png` on all faces: there is no separate flat dirt item texture.
+The item image uses that exact texture, cube geometry and the inherited GUI
+rotation `[30,225,0]` and scale `0.625`; its software rasterization, face
+lighting and placement are approximations, not a pixel-perfect vanilla item
+renderer. Text colours may be affected by the H.264 4:2:0 encoding.
+
+Restore the parent project's verified bundles, the supplied skin and pinned
+client as described above. Restore the two hash-pinned SFM assets listed in
+slice 02. Then run:
+
+```sh
+npm ci --ignore-scripts --no-audit --no-fund
+python3 bake.py
+python3 production/prepare_conference_assets.py
+STORY_ACTIVATE=/workspace/storytelling-setup/activate.sh bash render-conference.sh
+```
+
+The asset generator checks the client, skin, SFM assets and direct-test source
+before generating local ignored layers. It refuses to overwrite them; the
+renderer also refuses to replace its output. The reviewed cloud render fully
+decoded at 1280×720, 30 fps and 451 frames (15.033 seconds including the Motion
+Canvas endpoint). The first render exposed a one-frame final flash; the revised
+render holds the destination screen through the endpoint. The previous Motion
+Canvas preview's SHA-256 remained
+`8ec108f93bb3bbc5797d5477fef79601c71c789abc0de7d96a7cb90ea1387d30`.
+The revised conference preview is retained separately in Library; generated
+assets and media are not committed. `npm test` includes an independent timeline
+boundary and continuity check; visual inspection of the decoded start, midpoint,
+destination and final frames confirmed the staged transfer is visible.
