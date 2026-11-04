@@ -97,3 +97,27 @@ Its 14-second output also decoded fully at 1280×720 and 30 fps. The opening
 and editor-inset frame-difference checks found zero near-static adjacent pairs
 across 59 and 179 pairs respectively. Its inputs and invocation match slice
 04; generated files are preserved under `previews/conference-slice-05/`.
+
+## Slice 08: inventory transfer cutaway
+
+`slice08.py` depicts the source test's initial stack of 64 dirt in slot 0 of
+barrel `a` and its asserted final state in slot 0 of barrel `b`, alongside the
+editor and orbit. The SFM test barrel's
+[`TestBarrelBlockEntity`](https://github.com/TeamDman/SuperFactoryManager/blob/e2ba833b2b235835d69475b641e24b22bfd9551a/platform/minecraft/src/main/java/ca/teamdman/sfm/common/blockentity/TestBarrelBlockEntity.java)
+inherits the Minecraft barrel block entity. The saved dirt texture supplies
+the reconstructed item icon. Input hashes are verified before rendering.
+
+These side-by-side panels are an explanatory cutaway, not a first-person game
+capture. The barrel screen's texture, font and item icon are approximations;
+the simultaneous screens, flying stack and transfer timing are presentation
+devices. The test specifies `EVERY 20 TICKS` and checks the eventual state; it
+does not establish the displayed animation or a precise completion time. The
+player inventory is illustrative. Actual first-person barrel views and
+right-click animation remain future work.
+
+Run `python3 conference-preview/slice08.py` after generating slice 05 and
+restoring the orbit, source and dirt texture. Outputs are written under the
+ignored `previews/conference-slice-08/` and never overwrite an existing cut.
+The ten-second preview decoded fully at 1280×720, 30 fps and 300 frames. Its
+world inset had zero near-static adjacent pairs out of 299, and the full and
+empty inventory panels were verified to swap between endpoints.
