@@ -247,3 +247,30 @@ adjacent decoded frames were byte-identical. Image-wide differences are small
 in the intentionally slow close views and the mostly static editor, especially
 when the inventory overlays cover the moving scene; the camera-step check is
 reported separately from those image measurements.
+
+## Slice 16: provisional typography scaling proof
+
+`compose_crisp_native.py` tests 720p composition without reducing the editor
+image: the editor is read directly at 1280×720, and inventory pixels are
+reconstructed at their native 176×166 size and enlarged exactly 3× with
+nearest-neighbor sampling. The world frames are enlarged separately. The
+preview uses H.264 4:4:4 to preserve colored text edges; some players may not
+support this profile. This experiment **still uses the provisional DejaVu
+font**, not the Minecraft font, and is not a font-fidelity validation.
+
+After generating the slice 13 and 14 frame sequences, the slice 05 editor
+image, and their inputs, run:
+
+```sh
+python3 conference-preview/compose_crisp_native.py
+python3 conference-preview/compare_provisional_type.py
+```
+
+Outputs are written under ignored `previews/conference-slice-16/` and are not
+overwritten. In the recorded editor crop, the earlier 432p preview was enlarged
+to 720p for comparison. Its mean absolute channel error versus the unencoded
+editor image was 10.192, compared with 0.386 for this proof; 7,952 pixels
+versus zero had a maximum channel error above 20. Opaque inventory pixels in
+the proof had mean channel error 0.054 against the pre-encode 3× overlay.
+Both videos decoded fully at 1280×720, 30 fps and 270 frames. These checks
+measure scaling and encoding, not correct Minecraft glyph design or metrics.
