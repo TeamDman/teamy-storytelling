@@ -219,3 +219,31 @@ videos in ignored `previews/conference-slice-13/`. The open texture switch and
 hand position were checked in Blender. Both videos fully decoded with 180
 frames at 768×432 and 30 fps, and no near-static adjacent pairs were detected
 in the decoded preview. Its reported container duration is 5.999 seconds.
+
+## Slice 14: source and destination views
+
+`barrel_views.py` stages two close viewpoints in the same reconstructed 3D
+fixture. `compose_views.py` cuts from the slice 13 third-person gesture to the
+empty source barrel, the destination barrel with 64 dirt, and the slice 05
+editor. The barrel order and post-transfer contents come from the saved
+`Move1StackDirectWalkthroughGamePuppet` and direct test. The viewpoint
+positions, camera motion, cuts and screen timing are editorial; these are not
+captured first-person views, and no first-person hand is rendered. The screens
+and item icon retain the approximations described for slices 08 and 13.
+
+After generating slices 05 and 13 and restoring their inputs, run:
+
+```sh
+blender --background --threads 2 --python conference-preview/barrel_views.py -- --verify
+blender --background --threads 2 --python conference-preview/barrel_views.py -- --render
+python3 conference-preview/compose_views.py
+```
+
+The scripts preserve existing files under ignored
+`previews/conference-slice-14/`. Blender verification checks both open-state
+selections and all 118 within-view camera steps, with one deliberate cut. Both
+nine-second videos decoded fully with 270 frames at 768×432 and 30 fps; no
+adjacent decoded frames were byte-identical. Image-wide differences are small
+in the intentionally slow close views and the mostly static editor, especially
+when the inventory overlays cover the moving scene; the camera-step check is
+reported separately from those image measurements.
