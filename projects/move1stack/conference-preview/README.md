@@ -339,3 +339,55 @@ capture swung. A reported six-tick baseline and a 1.19.3 first-person formula
 are research leads, not verified 1.19.2 timing or geometry. In particular, the
 puppet's separate settle delay must not be treated as a swing duration. The
 arm motion in slices 12–18 remains illustrative.
+
+## Motion Canvas vertical slice (November 2026)
+
+The new `production/story-project.ts` is a separate eight-second Motion Canvas
+project. It renders the existing Three.js world directly through `Three`, adds
+an articulated legacy-skin player in Three.js, and controls camera, gesture and
+GUI visibility from one Motion Canvas time signal. This is a vertical slice,
+not a port of the complete conference cut. The original orbit and every prior
+preview are preserved. Blender and the previous FFmpeg composites are not inputs
+for this slice. Motion Canvas's FFmpeg exporter encodes the final frames.
+
+The opening player placement, arm swing, camera and screen timing are staged,
+not captured gameplay; the arm motion is illustrative, and the barrel does not
+change its world texture. The screen transition illustrates the source empty
+and destination full endpoints, but does not itself depict a transfer. The dirt
+item icon is still the earlier hand-built approximation. Side/back skin UVs and
+animation have not been independently checked against a game capture. The world
+retains the limitations in the parent README. There is no first-person hand.
+
+`production/prepare_story_assets.py` verifies the official 1.19.2 client against
+the pinned version metadata in `ground-truth/evidence/minecraft-1.19.2.json`
+(21,644,740 bytes, SHA-1 `055b30d860ead928cba3849ba920c88b6950b654`)
+before extracting its ASCII bitmap font, font mapping and vanilla
+`generic_54.png` in memory. It composes the three-row barrel at native GUI
+resolution, then uses nearest-neighbour 3x scaling at 1280×720. Only the ASCII
+labels used here are supported. The source assets and generated layers remain
+local and ignored. `font-comparison.png` compares the previous DejaVu
+approximation with the real bitmap at the final output size. The player skin
+is the separately supplied 64×32 file identified in slice 11 above.
+
+To reproduce, restore and verify the input bundles as in the parent README, put
+the verified skin at `.inputs/skin.png`, download the official pinned client
+from the `downloads.client.url` in the verified version metadata to
+`.inputs/minecraft-1.19.2-client.jar`, then run:
+
+```sh
+npm ci --ignore-scripts --no-audit --no-fund
+python3 bake.py
+python3 production/prepare_story_assets.py
+STORY_ACTIVATE=/workspace/storytelling-setup/activate.sh bash render-story.sh
+```
+
+The asset script refuses to overwrite GUI layers and the renderer refuses to
+replace its video. A configured Chromium sandbox and the other requirements in
+the parent README are still required. On the reviewed cloud graphics path the
+export completed at 1280×720, 30 fps, with 241 frames including Motion Canvas's
+endpoint (8.033 seconds), and decoded fully. The initial version was visually
+reviewed, then the camera corrected because it hid the player. The revised
+preview and output-resolution font comparison are separately retained in
+Library; generated media is not committed. The rendered preview is H.264
+`yuv420p`, so chroma subsampling and compression can still affect coloured
+edges even though GUI pixels were scaled without smoothing.
