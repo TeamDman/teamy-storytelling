@@ -274,3 +274,30 @@ versus zero had a maximum channel error above 20. Opaque inventory pixels in
 the proof had mean channel error 0.054 against the pre-encode 3× overlay.
 Both videos decoded fully at 1280×720, 30 fps and 270 frames. These checks
 measure scaling and encoding, not correct Minecraft glyph design or metrics.
+
+## Slice 17: two-character camera study
+
+`multichar_scene.py` adds a neutral, untextured and explicitly labeled second
+figure to the slice 13 fixture. It has no supplied skin or identity; its
+position and the first player's gesture are staged. `compose_multichar.py`
+cuts from that two-character shot to the two reconstructed barrel viewpoints
+from slice 14. The viewpoints are editorial camera positions, not a game
+recording, and do not include a first-person hand. No inventory UI or font is
+shown in this cut.
+
+After generating the slice 14 viewpoint frames and restoring the inputs for
+slice 13, run:
+
+```sh
+blender --background --threads 2 --python conference-preview/multichar_scene.py -- --verify
+blender --background --threads 2 --python conference-preview/multichar_scene.py -- --render
+python3 conference-preview/compose_multichar.py
+```
+
+Outputs are preserved under ignored `previews/conference-slice-17/` and the
+scripts refuse to replace them. The check confirms separate staged figures
+and places the placeholder on the restored ground. Both seven-second outputs
+decoded fully at 1280×720 and 30 fps, with 210 frames and no byte-identical
+adjacent decoded frames. The cuts between viewpoints are intentional; this
+check does not establish a real Minecraft animation or user-perceived
+smoothness.
