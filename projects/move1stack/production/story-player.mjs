@@ -21,8 +21,8 @@ export async function createPlayer(scene) {
     return new T.Mesh(geometry,material);
   }
   function part(w,h,d,a,b,x,y,mirror=false) {const mesh=box(w,h,d,a,b,mirror);mesh.position.set(x,y,0);root.add(mesh);return mesh;}
-  part(8,8,8,0,0,0,28); part(8,12,4,16,16,0,18); part(4,12,4,0,16,-2,6); part(4,12,4,0,16,2,6,true);
+  const head=part(8,8,8,0,0,0,28); part(8,12,4,16,16,0,18); part(4,12,4,0,16,-2,6); part(4,12,4,0,16,2,6,true);
   const arm=new T.Group();arm.position.set(-6,24,0);root.add(arm);const right=box(4,12,4,40,16);right.position.y=-6;arm.add(right);
   part(4,12,4,40,16,6,18,true);
-  return {root,update(t){const phase=Math.max(0,1-Math.abs(t-2.05)/.48);arm.rotation.x=-1.05*phase;}};
+  return {root,head,arm,update(t){const phase=Math.max(0,1-Math.abs(t-2.05)/.48);arm.rotation.x=-1.05*phase;}};
 }

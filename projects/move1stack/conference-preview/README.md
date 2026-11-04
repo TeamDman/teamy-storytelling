@@ -520,3 +520,31 @@ destination frames were visually reviewed at output resolution. The prior
 composite's SHA-256 remained
 `d435bead924d49cfb54d2326d9d31222f1723f4f855beb4deeeb477b1134fba7`.
 The revised preview is retained separately in Library.
+
+## Manager-facing creative-flight staging
+
+`production/manager-flight-project.ts` preserves the corrected inventory
+composite while changing the world staging. The player hovers at feet position
+`(2.3, 2.2, -2.5)`, farther from the manager than in the preceding shot, and
+its body yaw and head pitch aim toward the manager's center `(1.5, 2.5, 0.5)`.
+The right arm swings forward before the manager screen appears. The camera
+sweeps a restricted arc on the negative-Z command-block side instead of passing
+behind the fixture. This is an illustrative creative-flight and interaction
+pose, not a recorded game animation or proof of exact reach, timing, or physical
+contact. Legacy skin side/back orientation and world lighting retain the earlier
+limitations.
+
+After restoring the prior inputs and generated composite layers:
+
+```sh
+STORY_ACTIVATE=/workspace/storytelling-setup/activate.sh bash render-manager-flight.sh
+```
+
+The render refuses to replace the existing preview. The reviewed 1280×720,
+30-fps preview fully decoded with 481 frames (16.033 seconds including the
+endpoint). Frame inspection checked the airborne pose, arm swing and the later
+command-side inset; the tests check the aim vector, vertical separation, swing
+and camera side. The preceding corrected composite still has SHA-256
+`22221aed2e933c3d95194cb9d84fc558f3298274ff69483059ece2ea33da64f6`.
+The new video is retained separately in Library and generated media remains
+untracked.
