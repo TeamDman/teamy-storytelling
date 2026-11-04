@@ -321,3 +321,21 @@ the sharper editor pixels; some players may not support this profile.
 
 After generating slices 05, 08, 16 and 17 and restoring their inputs, run
 `python3 conference-preview/compose_story.py` in the storytelling environment.
+
+## Interaction evidence and animation limits
+
+The saved SFM puppet's `SFMGamePuppetMinecraftRuntime.useBlock` calls
+`gameMode.useItemOn` directly and contains no explicit player swing call. Its
+capture sequence therefore does not establish a hand-swing animation or its
+timing. The saved runtime source has SHA-256
+`0cd355e0c6473efdff477b002fdfd7d5e7437506225f0c2b2fcc0e6a97a80c0d`.
+
+The [Forge 1.19.2 client patch](https://github.com/MinecraftForge/MinecraftForge/blob/66e4ae51423e2dde5edd5ffea4a13dfab4621192/patches/minecraft/net/minecraft/client/Minecraft.java.patch)
+(Git blob `d1459ef7b6d4a28ced95887f528f9f3f35969d12`) shows the normal
+block-use path conditionally swinging after the interaction result, with an
+additional Forge input-event swing condition. That supports a conditional
+normal-player swing as a staging choice; it does not prove that the puppet
+capture swung. A reported six-tick baseline and a 1.19.3 first-person formula
+are research leads, not verified 1.19.2 timing or geometry. In particular, the
+puppet's separate settle delay must not be treated as a swing duration. The
+arm motion in slices 12–18 remains illustrative.
