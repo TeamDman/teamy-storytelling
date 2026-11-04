@@ -477,3 +477,46 @@ playback device. The previous conference preview retained SHA-256
 `6bb88346e6286cb707680ecf69ed901afc1e4638412207bdc70fd30aaa72e929`.
 The new preview is stored separately in Library; acquired assets and generated
 media remain untracked.
+
+## Inventory item geometry correction
+
+The first composite drew its dirt cube too small. The corrected composite
+rebuilds the stack from the verified 1.19.2 client and keeps all existing
+preview files intact. The following geometry was checked against the client
+classes using the [official 1.19.2 client mappings](https://piston-data.mojang.com/v1/objects/8e8c9be5dc27802caba47053d4fdea328f7f89bd/client.txt)
+(SHA-1 `8e8c9be5dc27802caba47053d4fdea328f7f89bd`) and the pinned client JAR:
+
+- `ChestMenu` places the first container slot at `(8,18)` with 18-pixel spacing;
+  `AbstractContainerScreen` passes that slot position to the item renderer.
+- `ItemRenderer.renderGuiItem` centers at `(x+8,y+8)` and scales the model by
+  16 GUI pixels before the model's GUI transform. Dirt inherits the cube GUI
+  rotation `[30,225,0]` and scale `0.625` from the client model JSON.
+- `renderGuiItemDecorations` draws the count at `x+17-font.width(count), y+9`
+  with a one-pixel shadow. The bitmap provider's glyph advances for `6` and `4`
+  are six pixels each, so `64` begins at `(x+5,y+9)`.
+
+The old item generator projected a model unit with 30 output pixels in a 3×
+slot, rather than the correct 48, then downsampled it. The corrected 2× slot
+uses 32 output pixels per model unit before the `0.625` transform and positions
+the count from the measured glyph advances. The item texture is the official
+client dirt texture; software face shading, UV orientation and rasterization
+remain approximations and have not been checked against a captured vanilla
+inventory. The transfer remains illustrative.
+
+After restoring the inputs and preparing the composite assets above:
+
+```sh
+python3 production/prepare_corrected_stack.py
+STORY_ACTIVATE=/workspace/storytelling-setup/activate.sh bash render-composite-corrected.sh
+```
+
+The generator verifies the client and refuses to overwrite its outputs. The
+corrected preview decodes fully at 1280×720, 30 fps, 481 frames (16.033 seconds
+including the endpoint). On the decoded 4-second source-slot frame, a simple
+colour-threshold comparison measured an approximately 18×14-pixel dirt region
+before correction and 32×30 pixels afterward; this is a compression-sensitive
+size check, not a pixel-exact comparison against a game capture. Source and
+destination frames were visually reviewed at output resolution. The prior
+composite's SHA-256 remained
+`d435bead924d49cfb54d2326d9d31222f1723f4f855beb4deeeb477b1134fba7`.
+The revised preview is retained separately in Library.
