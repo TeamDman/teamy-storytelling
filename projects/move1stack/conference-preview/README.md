@@ -185,3 +185,37 @@ ignored `previews/conference-slice-12/` directory. Blender 4.3.2 rendered
 grayscale frame-difference check found zero near-static adjacent pairs among
 179; the independently evaluated camera positions also changed at every
 frame. The lower resolution is intended for this short preview.
+
+## Slice 13: open barrel and inventory
+
+`world_barrel.py` continues the staged player gesture. It changes barrel `a`'s
+north-facing front from the restored closed texture to the restored
+`barrel_top_open.png` texture at the gesture peak, following the supplied
+open-state block model. `compose_barrel.py` then shows an empty source-barrel
+inventory: the saved walkthrough opens this barrel after the transfer. The
+choice of timing and the arm animation are illustrative, not a recording of
+the game.
+
+The inventory screen remains an approximation. Its frame and slot pixels come
+from the restored SFM manager texture; the three barrel rows are assembled
+from those slot pixels, and the text uses an approximate font. The original
+Minecraft 1.19.2 `generic_54.png` and bitmap font were not present in the
+restored project, so actual vanilla-screen pixel parity is not established.
+The screen, player inventory contents and camera view should not be treated as
+a captured first-person view. The world rendering has the same approximations
+described for slice 12.
+
+After restoring the same scene and skin inputs as slice 12, run:
+
+```sh
+blender --background --threads 2 --python conference-preview/world_barrel.py -- --verify
+blender --background --threads 2 --python conference-preview/world_barrel.py -- --render
+python3 conference-preview/compose_barrel.py
+```
+
+The source manager texture must be restored at `.inputs/sfm-gui/manager.png`
+as described for slice 02. Both scripts refuse to replace existing frames or
+videos in ignored `previews/conference-slice-13/`. The open texture switch and
+hand position were checked in Blender. Both videos fully decoded with 180
+frames at 768×432 and 30 fps, and no near-static adjacent pairs were detected
+in the decoded preview. Its reported container duration is 5.999 seconds.
