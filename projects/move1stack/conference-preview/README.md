@@ -301,3 +301,23 @@ decoded fully at 1280×720 and 30 fps, with 210 frames and no byte-identical
 adjacent decoded frames. The cuts between viewpoints are intentional; this
 check does not establish a real Minecraft animation or user-perceived
 smoothness.
+
+## Slice 18: integrated story cut
+
+`compose_story.py` joins the existing orbit/manager shot (0–8 seconds), editor
+(8–10), illustrated transfer (10–16), two-character staging (16–19), and
+source/destination barrel viewpoints (19–23). The changes of view are editorial
+cuts, not continuous first-person game footage. It checks the four input video
+hashes and refuses to overwrite `previews/conference-slice-18/`.
+
+The earlier qualifications still apply: the inventory screens and font are
+provisional, the second figure is a labeled untextured placeholder, and the
+player's gesture and viewpoints are staged. The saved test establishes the
+program and inventory endpoints, not the illustrated transfer motion. The
+23-second preview decoded fully at 1280×720 and 30 fps with 690 frames and no
+byte-identical adjacent decoded frames. Representative frames from all five
+sections were compared with their source shots. H.264 4:4:4 is used to retain
+the sharper editor pixels; some players may not support this profile.
+
+After generating slices 05, 08, 16 and 17 and restoring their inputs, run
+`python3 conference-preview/compose_story.py` in the storytelling environment.
