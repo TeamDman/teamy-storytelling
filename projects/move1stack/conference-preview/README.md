@@ -149,3 +149,39 @@ samples, including both mirrored limbs, matched the skin within one channel
 value in this render. This check does not verify the unseen faces or animation.
 Both nine-second videos decoded fully at 1280×720 and 30 fps; the moving world
 inset had zero near-static pairs out of 269.
+
+## Slice 12: player in the reconstructed world
+
+`world_player.py` imports all 195 faces from the saved `baked-scene.json`
+and places the legacy-skin model in that three-dimensional fixture. It stages
+the player on the existing command block, then raises and lowers the right arm
+toward barrel `a`. Placement, pose, camera and timing are invented for the
+shot. The gesture is a right-click *illustration*, not a verified Minecraft
+animation; the barrel does not open and no inventory is manipulated here.
+Blender's materials and sky differ from the original renderer; the beacon is a
+simple static approximation and animated block atlases use their first frame.
+This is not a game capture.
+
+The script checks the legacy skin, baked geometry and grass atlas hashes.
+`--verify` compares all 36 model-face rectangles, 144 UV corners and 1,632
+pixel-center coordinates with an explicit legacy mapping table, including the
+mirrored limbs. The separate slice 11 front render compares skin colors; there
+is still no independent in-game reference for side/back face orientation.
+The same check verifies that the staged hand enters the reconstructed `a`
+barrel bounds at the gesture peak and the camera moves on all 179 frame
+intervals. These are geometry and cadence checks, not proof of a real click.
+
+After restoring the project assets, the exact skin and the baked world, run:
+
+```sh
+blender --background --threads 2 --python conference-preview/world_player.py -- --verify
+blender --background --threads 2 --python conference-preview/world_player.py -- --render
+python3 conference-preview/encode_world_player.py
+```
+
+The render and encoder refuse to replace existing frames or videos in the
+ignored `previews/conference-slice-12/` directory. Blender 4.3.2 rendered
+180 frames at 768×432 and 30 fps; both six-second videos decoded fully. A
+grayscale frame-difference check found zero near-static adjacent pairs among
+179; the independently evaluated camera positions also changed at every
+frame. The lower resolution is intended for this short preview.
