@@ -439,3 +439,41 @@ The revised conference preview is retained separately in Library; generated
 assets and media are not committed. `npm test` includes an independent timeline
 boundary and continuity check; visual inspection of the decoded start, midpoint,
 destination and final frames confirmed the staged transfer is visible.
+
+## Motion Canvas conference composite: orbit and concurrent views
+
+`production/composite-project.ts` is a separate 16-second Motion Canvas slice.
+The existing Three.js orbit starts full frame and smoothly shrinks to an inset;
+it continues to update on the same timeline while the manager, then the V1
+editor, appears alongside cropped three-row views of barrels `a` and `b`.
+The stack of 64 starts in `a`, follows a staged path, and finishes in `b`.
+The source test supports the endpoints and program, not the path, timing,
+simultaneous open screens, or the illustrative manager running state. The
+player gesture and world remain reconstructions with the limitations above.
+
+The only added presentation labels are `a` and `b`, needed to distinguish the
+source and destination; player-inventory rows are intentionally cropped from
+the two barrel views. The manager and editor use the actual bitmap font and
+source-derived layouts, with approximate button skins. The editor's 296×240
+logical layout follows the pinned V1 `editorLayout` calculation; its text and
+controls are enlarged exactly 2×. The world inset, panel arrangement and
+animation are presentation devices, not game captures. The dirt icon retains
+the exact texture and approximate shading described in the preceding section.
+
+After restoring the inputs and generating the earlier conference assets:
+
+```sh
+python3 production/prepare_composite_assets.py
+STORY_ACTIVATE=/workspace/storytelling-setup/activate.sh bash render-composite.sh
+```
+
+The generator checks the prior layers and client hashes, and refuses to replace
+existing output. Rendering similarly refuses to replace its preview. The
+reviewed render decoded fully at 1280×720, 30 fps, and 481 frames (16.033 seconds
+including the Motion Canvas endpoint). Visual inspection covered the manager,
+editor, transfer and final states. A two-second decoded inset sample (60 frames)
+had no identical adjacent pairs; this checks the sampled cadence, not every
+playback device. The previous conference preview retained SHA-256
+`6bb88346e6286cb707680ecf69ed901afc1e4638412207bdc70fd30aaa72e929`.
+The new preview is stored separately in Library; acquired assets and generated
+media remain untracked.
