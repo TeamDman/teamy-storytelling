@@ -1,0 +1,78 @@
+[
+  {
+    "scene": "hook",
+    "text": "On a handmade Neocities page, someone meant to put this picture next to this note. Can you really arrange a page like this by writing code?"
+  },
+  {
+    "scene": "hook2",
+    "text": "Yes. The maker writes relationships. The browser chooses the coordinates that satisfy them on each screen."
+  },
+  {
+    "scene": "page",
+    "text": "This is our Moon Snail Post Office, opened in a real browser. Watch the illustration move above the note as the window narrows. The little stamp stays attached to the postcard."
+  },
+  {
+    "scene": "formats",
+    "text": "A PNG screenshot freezes the layout and text. An SVG can stay crisp and may contain selectable text, but scaling a fixed composition is not the same as HTML reflowing."
+  },
+  {
+    "scene": "files",
+    "text": "Start in a plain text editor. Save index dot html. HTML describes the things on the page, and the order they belong in. A separate style sheet describes how they look and fit together."
+  },
+  {
+    "scene": "html",
+    "text": "Here's the actual postcard structure. The section holds a snail image and a note. The image source names its file; the alternative text describes the picture for someone who cannot see it."
+  },
+  {
+    "scene": "local",
+    "text": "Open the page locally in a browser. Here we use a small local server. The browser reads the HTML and the linked style sheet, then draws the result. You're editing instructions, not painting a screenshot."
+  },
+  {
+    "scene": "flow",
+    "text": "With no special layout rule, blocks normally follow one another. The note comes after the picture. That ordinary flow is our starting point."
+  },
+  {
+    "scene": "rules",
+    "text": "A drag might say put the snail at this coordinate. Our author means something more useful: put the picture beside the note when there is room, but keep both readable when there isn't."
+  },
+  {
+    "scene": "grid",
+    "text": "The postcard is the parent box. Its grid rule arranges the image and the note as children. This columns rule fits as many columns as it can, aiming for a minimum of two hundred sixty pixels each."
+  },
+  {
+    "scene": "grid",
+    "text": "Wide enough for two? The snail sits beside the note. Too narrow? They stack, picture first. The browser recalculates coordinates while keeping the author's relationship."
+  },
+  {
+    "scene": "stamp",
+    "text": "The stamp has a different job. Position relative makes the postcard a reference box. Position absolute, top ten, right twelve pins the stamp to that box, not to the browser window."
+  },
+  {
+    "scene": "edit",
+    "text": "Now let's make one deliberate change: more space between the snail and the note. In the postcard rule, change gap from twenty four pixels to sixty. Save the file, then refresh."
+  },
+  {
+    "scene": "observe",
+    "text": "Here is the real browser before and after. The gap grew, and the two columns became narrower. One edit changed their relationship; neither picture needed a new coordinate."
+  },
+  {
+    "scene": "inspect",
+    "text": "To investigate, View Source shows the original HTML loaded for the page. Inspector shows the live document tree and computed layout. Find the postcard parent, its image and note, and the stamp."
+  },
+  {
+    "scene": "exercise",
+    "text": "Your turn. Predict what will happen if you change the postcard gap to twelve pixels. Save, refresh, and check. Then narrow the browser. Where does the note go, and what happens to the stamp?"
+  },
+  {
+    "scene": "host",
+    "text": "To share your page, upload index dot html, style dot css, and the two image files to a static host. Neocities also has a browser editor for your files."
+  },
+  {
+    "scene": "host",
+    "text": "A free Neocities address follows the pattern site name dot neocities dot org. The host serves your files, and each visitor's browser lays them out for its own screen."
+  },
+  {
+    "scene": "ending",
+    "text": "The maker chose the relationships: snail beside note when it fits, stamp on postcard, pictures in a gallery. The browser does the measuring. That's how typed instructions can make a page feel handmade."
+  }
+]
