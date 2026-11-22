@@ -1,75 +1,87 @@
 [
   {
     "scene": "hook",
-    "text": "On a handmade Neocities page, someone meant to put this picture next to this note. Can you really arrange a page like this by writing code?"
+    "text": "Could someone place all these pictures on a handmade Neocities page by writing code? Let's look at one choice the maker actually made."
   },
   {
     "scene": "hook2",
-    "text": "Yes. The maker writes relationships. The browser chooses the coordinates that satisfy them on each screen."
+    "text": "The snail goes beside the note when there is room. This little stamp is another picture, attached to the postcard. Both screens use the same files."
   },
   {
-    "scene": "page",
-    "text": "This is our Moon Snail Post Office, opened in a real browser. Watch the illustration move above the note as the window narrows. The little stamp stays attached to the postcard."
+    "scene": "page_predict",
+    "text": "Before we resize: what do you think will happen to the snail and the note on a narrow screen?"
+  },
+  {
+    "scene": "page_reveal",
+    "text": "Let's narrow it. Now the note stacks below the picture. The same rules keep the stamp attached to the postcard."
   },
   {
     "scene": "formats",
-    "text": "A PNG screenshot freezes the layout and text. An SVG can stay crisp and may contain selectable text, but scaling a fixed composition is not the same as HTML reflowing."
+    "text": "A PNG screenshot freezes layout and text. An SVG can stay crisp and may contain selectable text, but scaling a fixed composition is not the same as HTML reflowing."
   },
   {
     "scene": "files",
-    "text": "Start in a plain text editor. Save index dot html. HTML describes the things on the page, and the order they belong in. A separate style sheet describes how they look and fit together."
+    "text": "Start in a plain text editor. Save index dot html. HTML describes the things on the page and their order. A separate style sheet describes how they look and fit together."
   },
   {
     "scene": "html",
-    "text": "Here's the actual postcard structure. The section holds a snail image and a note. The image source names its file; the alternative text describes the picture for someone who cannot see it."
+    "text": "The postcard section contains the snail image, a note, and the decorative stamp image. The snail's alternative text describes it for someone who cannot see it."
   },
   {
     "scene": "local",
-    "text": "Open the page locally in a browser. Here we use a small local server. The browser reads the HTML and the linked style sheet, then draws the result. You're editing instructions, not painting a screenshot."
+    "text": "Open the page locally in a browser. Here we use a small local server. The browser reads the HTML and its linked style sheet, then draws the result."
   },
   {
     "scene": "flow",
-    "text": "With no special layout rule, blocks normally follow one another. The note comes after the picture. That ordinary flow is our starting point."
+    "text": "Without a special layout rule, blocks normally follow one another. The note comes after the picture. That ordinary flow is our starting point."
   },
   {
     "scene": "rules",
-    "text": "A drag might say put the snail at this coordinate. Our author means something more useful: put the picture beside the note when there is room, but keep both readable when there isn't."
+    "text": "A drag might say put the snail at one coordinate. Our author can say: put the picture beside the note when there is room, but keep both readable when there isn't."
   },
   {
-    "scene": "grid",
-    "text": "The postcard is the parent box. Its grid rule arranges the image and the note as children. This columns rule fits as many columns as it can, aiming for a minimum of two hundred sixty pixels each."
+    "scene": "grid_code",
+    "text": "The postcard is the parent box. Its grid rule places the image and the note. This columns rule fits as many columns as it can, aiming for a minimum of two hundred sixty pixels each."
   },
   {
-    "scene": "grid",
-    "text": "Wide enough for two? The snail sits beside the note. Too narrow? They stack, picture first. The browser recalculates coordinates while keeping the author's relationship."
+    "scene": "grid_predict",
+    "text": "If the available space becomes too narrow for two columns, predict where the note will go."
   },
   {
-    "scene": "stamp",
-    "text": "The stamp has a different job. Position relative makes the postcard a reference box. Position absolute, top ten, right twelve pins the stamp to that box, not to the browser window."
+    "scene": "grid_reveal",
+    "text": "The note goes below the image. The browser measures the space and keeps their order, using the same rule."
   },
   {
-    "scene": "edit",
-    "text": "Now let's make one deliberate change: more space between the snail and the note. In the postcard rule, change gap from twenty four pixels to sixty. Save the file, then refresh."
+    "scene": "stamp_code",
+    "text": "The stamp has a different rule. The postcard is positioned relative, making it a reference box. The stamp is positioned absolute, outside normal flow, so it can overlap."
   },
   {
-    "scene": "observe",
-    "text": "Here is the real browser before and after. The gap grew, and the two columns became narrower. One edit changed their relationship; neither picture needed a new coordinate."
+    "scene": "anchor_edit",
+    "text": "Let's move one actual picture. The stamp starts twelve pixels from the postcard's right edge. Change right to one hundred pixels, save, and refresh."
+  },
+  {
+    "scene": "anchor_observe",
+    "text": "Here are the real browser results at the same width. The stamp moved left by eighty eight pixels. The postcard, snail, and note stayed put."
+  },
+  {
+    "scene": "anchor_resize",
+    "text": "Narrow the browser, and the stamp stays one hundred pixels from the postcard's right side. It can overlap the picture."
   },
   {
     "scene": "inspect",
-    "text": "To investigate, View Source shows the original HTML loaded for the page. Inspector shows the live document tree and computed layout. Find the postcard parent, its image and note, and the stamp."
+    "text": "View Source shows the original HTML loaded for the page. Inspector shows the live document tree and computed layout. Find the postcard, its picture and note, and the stamp."
   },
   {
     "scene": "exercise",
-    "text": "Your turn. Predict what will happen if you change the postcard gap to twelve pixels. Save, refresh, and check. Then narrow the browser. Where does the note go, and what happens to the stamp?"
+    "text": "Your turn. Change the stamp's right value to forty pixels. Predict which way it moves, save, refresh, and check. Then narrow the browser. What is the stamp attached to?"
   },
   {
     "scene": "host",
-    "text": "To share your page, upload index dot html, style dot css, and the two image files to a static host. Neocities also has a browser editor for your files."
+    "text": "To share the page, upload index dot html, style dot css, snail dot svg, garden dot svg, and stamp dot svg to a static host. Neocities also has a browser editor."
   },
   {
     "scene": "host",
-    "text": "A free Neocities address follows the pattern site name dot neocities dot org. The host serves your files, and each visitor's browser lays them out for its own screen."
+    "text": "A free Neocities address follows the pattern site name dot neocities dot org. The host serves the files, and each visitor's browser lays them out for its own screen."
   },
   {
     "scene": "ending",

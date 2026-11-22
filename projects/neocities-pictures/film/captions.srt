@@ -1,295 +1,426 @@
 1
-00:00:00,000 --> 00:00:03,067
-On a handmade Neocities page, someone meant to
+00:00:00,000 --> 00:00:02,227
+Could someone place all these pictures
+on
 
 2
-00:00:03,067 --> 00:00:06,135
-put this picture next to this note. Can you
+00:00:02,227 --> 00:00:05,355
+a handmade Neocities page by writing
+code?
 
 3
-00:00:06,135 --> 00:00:09,202
-really arrange a page like this by writing code?
+00:00:05,355 --> 00:00:07,401
+Let's look at one choice the maker
 
 4
-00:00:09,852 --> 00:00:13,639
-Yes. The maker writes relationships. The browser
-chooses
+00:00:07,401 --> 00:00:08,720
+actually made.
 
 5
-00:00:13,639 --> 00:00:17,427
-the coordinates that satisfy them on each
-screen.
+00:00:09,070 --> 00:00:10,824
+The snail goes beside the note when
 
 6
-00:00:18,077 --> 00:00:20,909
-This is our Moon Snail Post Office,
+00:00:10,824 --> 00:00:11,986
+there is room.
 
 7
-00:00:20,909 --> 00:00:23,742
-opened in a real browser. Watch the illustration
+00:00:11,986 --> 00:00:14,782
+This little stamp is another picture,
+attached
 
 8
-00:00:23,742 --> 00:00:26,574
-move above the note as the window narrows.
+00:00:14,782 --> 00:00:16,244
+to the postcard.
 
 9
-00:00:26,574 --> 00:00:29,406
-The little stamp stays attached to the postcard.
+00:00:16,244 --> 00:00:18,654
+Both screens use the same files.
 
 10
-00:00:30,056 --> 00:00:34,245
-A PNG screenshot freezes the layout and text. An
-SVG
+00:00:19,004 --> 00:00:21,348
+Before we resize: what do you think
 
 11
-00:00:34,245 --> 00:00:38,434
-can stay crisp and may contain selectable text,
-but scaling
+00:00:21,348 --> 00:00:23,166
+will happen to the snail and the
 
 12
-00:00:38,434 --> 00:00:42,622
-a fixed composition is not the same as HTML
-reflowing.
+00:00:23,166 --> 00:00:24,819
+note on a narrow screen?
 
 13
-00:00:43,272 --> 00:00:46,819
-Start in a plain text editor. Save index
+00:00:25,169 --> 00:00:26,387
+Let's narrow it.
 
 14
-00:00:46,819 --> 00:00:50,365
-dot html. HTML describes the things on the page,
+00:00:26,387 --> 00:00:28,938
+Now the note stacks below the picture.
 
 15
-00:00:50,365 --> 00:00:53,911
-and the order they belong in. A separate
+00:00:28,938 --> 00:00:31,293
+The same rules keep the stamp attached
 
 16
-00:00:53,911 --> 00:00:57,457
-style sheet describes how they look and fit
-together.
+00:00:31,293 --> 00:00:32,636
+to the postcard.
 
 17
-00:00:58,107 --> 00:01:01,441
-Here's the actual postcard structure. The
-section holds
+00:00:32,986 --> 00:00:36,344
+A PNG screenshot freezes layout and
+text.
 
 18
-00:01:01,441 --> 00:01:04,775
-a snail image and a note. The image
+00:00:36,344 --> 00:00:38,546
+An SVG can stay crisp and may
 
 19
-00:01:04,775 --> 00:01:08,109
-source names its file; the alternative text
-describes
+00:00:38,546 --> 00:00:41,731
+contain selectable text, but scaling a
+fixed
 
 20
-00:01:08,109 --> 00:01:11,444
-the picture for someone who cannot see it.
+00:00:41,731 --> 00:00:44,273
+composition is not the same as HTML
 
 21
-00:01:12,094 --> 00:01:15,651
-Open the page locally in a browser. Here
+00:00:44,273 --> 00:00:45,205
+reflowing.
 
 22
-00:01:15,651 --> 00:01:19,208
-we use a small local server. The browser reads
+00:00:45,555 --> 00:00:47,796
+Start in a plain text editor.
 
 23
-00:01:19,208 --> 00:01:22,765
-the HTML and the linked style sheet, then draws
+00:00:47,796 --> 00:00:50,226
+Save index dot html.
 
 24
-00:01:22,765 --> 00:01:26,322
-the result. You're editing instructions, not
-painting a screenshot.
+00:00:50,226 --> 00:00:53,037
+HTML describes the things on the page
 
 25
-00:01:26,972 --> 00:01:30,123
-With no special layout rule, blocks normally
+00:00:53,037 --> 00:00:54,305
+and their order.
 
 26
-00:01:30,123 --> 00:01:33,274
-follow one another. The note comes after the
+00:00:54,305 --> 00:00:56,755
+A separate style sheet describes how
+they
 
 27
-00:01:33,274 --> 00:01:36,426
-picture. That ordinary flow is our starting
-point.
+00:00:56,755 --> 00:00:58,631
+look and fit together.
 
 28
-00:01:37,076 --> 00:01:39,921
-A drag might say put the snail at
+00:00:58,981 --> 00:01:02,099
+The postcard section contains the snail
+image,
 
 29
-00:01:39,921 --> 00:01:42,766
-this coordinate. Our author means something more
-useful:
+00:01:02,099 --> 00:01:05,007
+a note, and the decorative stamp image.
 
 30
-00:01:42,766 --> 00:01:45,611
-put the picture beside the note when there
+00:01:05,007 --> 00:01:07,789
+The snail's alternative text describes
+it for
 
 31
-00:01:45,611 --> 00:01:48,457
-is room, but keep both readable when there
-isn't.
+00:01:07,789 --> 00:01:09,857
+someone who cannot see it.
 
 32
-00:01:49,107 --> 00:01:52,430
-The postcard is the parent box. Its grid rule
+00:01:10,207 --> 00:01:12,540
+Open the page locally in a browser.
 
 33
-00:01:52,430 --> 00:01:55,754
-arranges the image and the note as children.
-This
+00:01:12,540 --> 00:01:15,028
+Here we use a small local server.
 
 34
-00:01:55,754 --> 00:01:59,078
-columns rule fits as many columns as it can,
+00:01:15,028 --> 00:01:17,463
+The browser reads the HTML and its
 
 35
-00:01:59,078 --> 00:02:02,401
-aiming for a minimum of two hundred sixty pixels
-each.
+00:01:17,463 --> 00:01:20,569
+linked style sheet, then draws the
+result.
 
 36
-00:02:03,051 --> 00:02:07,084
-Wide enough for two? The snail sits beside
+00:01:20,919 --> 00:01:23,592
+Without a special layout rule, blocks
+normally
 
 37
-00:02:07,084 --> 00:02:11,116
-the note. Too narrow? They stack, picture first.
+00:01:23,592 --> 00:01:25,108
+follow one another.
 
 38
-00:02:11,116 --> 00:02:15,148
-The browser recalculates coordinates while
-keeping the author's relationship.
+00:01:25,108 --> 00:01:27,433
+The note comes after the picture.
 
 39
-00:02:15,798 --> 00:02:19,125
-The stamp has a different job. Position
+00:01:27,433 --> 00:01:30,229
+That ordinary flow is our starting
+point.
 
 40
-00:02:19,125 --> 00:02:22,452
-relative makes the postcard a reference box.
-Position
+00:01:30,579 --> 00:01:32,231
+A drag might say put the snail
 
 41
-00:02:22,452 --> 00:02:25,779
-absolute, top ten, right twelve pins the stamp
+00:01:32,231 --> 00:01:33,850
+at one coordinate.
 
 42
-00:02:25,779 --> 00:02:29,106
-to that box, not to the browser window.
+00:01:33,850 --> 00:01:36,236
+Our author can say: put the picture
 
 43
-00:02:29,756 --> 00:02:33,025
-Now let's make one deliberate change: more
+00:01:36,236 --> 00:01:38,275
+beside the note when there is room,
 
 44
-00:02:33,025 --> 00:02:36,294
-space between the snail and the note. In
+00:01:38,275 --> 00:01:40,830
+but keep both readable when there
+isn't.
 
 45
-00:02:36,294 --> 00:02:39,563
-the postcard rule, change gap from twenty four
+00:01:41,180 --> 00:01:43,597
+The postcard is the parent box.
 
 46
-00:02:39,563 --> 00:02:42,832
-pixels to sixty. Save the file, then refresh.
+00:01:43,597 --> 00:01:45,808
+Its grid rule places the image and
 
 47
-00:02:43,482 --> 00:02:47,345
-Here is the real browser before and after. The
+00:01:45,808 --> 00:01:48,312
+the note. This columns rule fits as
 
 48
-00:02:47,345 --> 00:02:51,209
-gap grew, and the two columns became narrower.
-One
+00:01:48,312 --> 00:01:50,591
+many columns as it can, aiming for
 
 49
-00:02:51,209 --> 00:02:55,072
-edit changed their relationship; neither picture
-needed a new coordinate.
+00:01:50,591 --> 00:01:53,004
+a minimum of two hundred sixty pixels
 
 50
-00:02:55,722 --> 00:02:59,339
-To investigate, View Source shows the original
-HTML
+00:01:53,004 --> 00:01:53,616
+each.
 
 51
-00:02:59,339 --> 00:03:02,955
-loaded for the page. Inspector shows the live
+00:01:53,966 --> 00:01:56,169
+If the available space becomes too
+narrow
 
 52
-00:03:02,955 --> 00:03:06,571
-document tree and computed layout. Find the
-postcard
+00:01:56,169 --> 00:01:58,691
+for two columns, predict where the note
 
 53
-00:03:06,571 --> 00:03:10,187
-parent, its image and note, and the stamp.
+00:01:58,691 --> 00:01:59,558
+will go.
 
 54
-00:03:10,837 --> 00:03:14,360
-Your turn. Predict what will happen if you
+00:01:59,908 --> 00:02:01,728
+The note goes below the image.
 
 55
-00:03:14,360 --> 00:03:17,883
-change the postcard gap to twelve pixels. Save,
-refresh,
+00:02:01,728 --> 00:02:04,076
+The browser measures the space and
+keeps
 
 56
-00:03:17,883 --> 00:03:21,405
-and check. Then narrow the browser. Where does
+00:02:04,076 --> 00:02:06,449
+their order, using the same rule.
 
 57
-00:03:21,405 --> 00:03:24,928
-the note go, and what happens to the stamp?
+00:02:06,799 --> 00:02:08,897
+The stamp has a different rule.
 
 58
-00:03:25,578 --> 00:03:29,484
-To share your page, upload index dot html, style
+00:02:08,897 --> 00:02:11,768
+The postcard is positioned relative,
+making it
 
 59
-00:03:29,484 --> 00:03:33,390
-dot css, and the two image files to a static
+00:02:11,768 --> 00:02:13,238
+a reference box.
 
 60
-00:03:33,390 --> 00:03:37,297
-host. Neocities also has a browser editor for
-your files.
+00:02:13,238 --> 00:02:16,346
+The stamp is positioned absolute,
+outside normal
 
 61
-00:03:37,947 --> 00:03:41,641
-A free Neocities address follows the pattern
-site name
+00:02:16,346 --> 00:02:18,580
+flow, so it can overlap.
 
 62
-00:03:41,641 --> 00:03:45,336
-dot neocities dot org. The host serves your
-files, and
+00:02:18,930 --> 00:02:21,210
+Let's move one actual picture.
 
 63
-00:03:45,336 --> 00:03:49,031
-each visitor's browser lays them out for its own
-screen.
+00:02:21,210 --> 00:02:23,724
+The stamp starts twelve pixels from the
 
 64
-00:03:49,681 --> 00:03:53,170
-The maker chose the relationships: snail beside
-note
+00:02:23,724 --> 00:02:25,593
+postcard's right edge.
 
 65
-00:03:53,170 --> 00:03:56,659
-when it fits, stamp on postcard, pictures in
+00:02:25,593 --> 00:02:28,821
+Change right to one hundred pixels,
+save,
 
 66
-00:03:56,659 --> 00:04:00,148
-a gallery. The browser does the measuring.
-That's
+00:02:28,821 --> 00:02:29,842
+and refresh.
 
 67
-00:04:00,148 --> 00:04:03,637
-how typed instructions can make a page feel
-handmade.
+00:02:30,192 --> 00:02:32,128
+Here are the real browser results at
+
+68
+00:02:32,128 --> 00:02:33,453
+the same width.
+
+69
+00:02:33,453 --> 00:02:35,534
+The stamp moved left by eighty eight
+
+70
+00:02:35,534 --> 00:02:39,308
+pixels. The postcard, snail, and note
+stayed
+
+71
+00:02:39,308 --> 00:02:39,926
+put.
+
+72
+00:02:40,276 --> 00:02:42,601
+Narrow the browser, and the stamp stays
+
+73
+00:02:42,601 --> 00:02:45,405
+one hundred pixels from the postcard's
+right
+
+74
+00:02:45,405 --> 00:02:48,225
+side. It can overlap the picture.
+
+75
+00:02:48,575 --> 00:02:51,335
+View Source shows the original HTML
+loaded
+
+76
+00:02:51,335 --> 00:02:52,522
+for the page.
+
+77
+00:02:52,522 --> 00:02:55,315
+Inspector shows the live document tree
+and
+
+78
+00:02:55,315 --> 00:02:59,279
+computed layout. Find the postcard, its
+picture
+
+79
+00:02:59,279 --> 00:03:01,261
+and note, and the stamp.
+
+80
+00:03:01,611 --> 00:03:04,523
+Your turn. Change the stamp's right
+value
+
+81
+00:03:04,523 --> 00:03:06,095
+to forty pixels.
+
+82
+00:03:06,095 --> 00:03:09,497
+Predict which way it moves, save,
+refresh,
+
+83
+00:03:09,497 --> 00:03:12,211
+and check. Then narrow the browser.
+
+84
+00:03:12,211 --> 00:03:14,257
+What is the stamp attached to?
+
+85
+00:03:14,607 --> 00:03:17,066
+To share the page, upload index dot
+
+86
+00:03:17,066 --> 00:03:21,384
+html, style dot css, snail dot svg,
+
+87
+00:03:21,384 --> 00:03:24,551
+garden dot svg, and stamp dot svg
+
+88
+00:03:24,551 --> 00:03:26,138
+to a static host.
+
+89
+00:03:26,138 --> 00:03:28,636
+Neocities also has a browser editor.
+
+90
+00:03:28,986 --> 00:03:31,322
+A free Neocities address follows the
+pattern
+
+91
+00:03:31,322 --> 00:03:34,063
+site name dot neocities dot org.
+
+92
+00:03:34,063 --> 00:03:36,444
+The host serves the files, and each
+
+93
+00:03:36,444 --> 00:03:38,754
+visitor's browser lays them out for its
+
+94
+00:03:38,754 --> 00:03:39,837
+own screen.
+
+95
+00:03:40,187 --> 00:03:43,313
+The maker chose the relationships:
+snail beside
+
+96
+00:03:43,313 --> 00:03:46,259
+note when it fits, stamp on postcard,
+
+97
+00:03:46,259 --> 00:03:47,882
+pictures in a gallery.
+
+98
+00:03:47,882 --> 00:03:49,850
+The browser does the measuring.
+
+99
+00:03:49,850 --> 00:03:52,261
+That's how typed instructions can make
+a
+
+100
+00:03:52,261 --> 00:03:53,938
+page feel handmade.
